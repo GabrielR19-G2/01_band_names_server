@@ -1,4 +1,4 @@
-const {io} = require('../index');
+const { io } = require('../index');
 
 // Sockets msgs
 io.on('connection', client => {
@@ -17,4 +17,12 @@ io.on('connection', client => {
         io.emit('mensaje', { admin: "Nuevo mensaje" });
     })
 
+    // cliente emite 'nuevo-mensaje'
+    client.on('emitir-mensaje', (payload) => {
+        console.log(payload);
+        // payload -> lo que la persona quiere emitir
+        // io.emit('nuevo-mensaje', payload); //emite a todos!
+        client.broadcast.emit('nuevo-mensaje', payload); //emite a todos menos el que lo emitió
+
+    })
 });

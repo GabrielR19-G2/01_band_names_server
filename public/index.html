@@ -28,8 +28,8 @@
             nombre: 'Gabriel'
         });
 
-        client.on('mensaje', function (payload) {
-            console.log('Nuevo mensaje');
+        client.on('nuevo-mensaje', function (payload) {
+            console.log('Nuevo mensaje:', payload);
         })
     </script>
 </body>
